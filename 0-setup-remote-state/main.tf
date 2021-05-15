@@ -21,9 +21,15 @@ variable "naming_prefix" {
 # PROVIDERS
 ##################################################################################
 
-provider "azurerm" {
-  version = "~> 2.0"
+terraform {
+  required_providers {
+    azurerm = {
+      version = "~> 2.0"
+    }
+  }
+}
 
+provider "azurerm" {
   features {}
 }
 
@@ -102,6 +108,6 @@ output "resource_group_name" {
 }
 
 output "sas_token" {
-    value = data.azurerm_storage_account_sas.state.sas
-    sensitive = true
+  value     = data.azurerm_storage_account_sas.state.sas
+  sensitive = true
 }
