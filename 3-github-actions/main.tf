@@ -43,6 +43,7 @@ provider "azurerm" {
 
 locals {
     name = "${var.prefix}-demo"
+    name2 = "${var.prefix}-demo2"
 }
 
 ###########################
@@ -51,6 +52,11 @@ locals {
 
 resource "azurerm_resource_group" "vnet" {
   name     = local.name
+  location = var.region
+}
+
+resource "azurerm_resource_group" "vnet2" {
+  name     = local.name2
   location = var.region
 }
 
