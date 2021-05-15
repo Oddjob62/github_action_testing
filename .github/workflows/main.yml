@@ -4,9 +4,6 @@ name: validate-code
 
 on: [push, pull_request]
 
-env:
-  TF_LOG: INFO
-
 jobs:
   validate:
     defaults:
