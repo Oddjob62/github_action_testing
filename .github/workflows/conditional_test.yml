@@ -9,7 +9,7 @@ on:
         - 'Non-Prod'
 jobs:
   ProdJob:
-    if: ${{ github.event.inputs.prod == 'Non-Prod'}}
+    if: ${{ github.event.inputs.prod == 'Prod'}}
     runs-on: ubuntu-latest
     steps:
       - name: I Am Prod
