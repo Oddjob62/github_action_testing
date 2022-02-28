@@ -8,17 +8,21 @@ on:
         - 'Prod'
         - 'Non-Prod'
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  ProdJob:
+    if: ${{ github.event.inputs.prod == 'Non-Prod'}}
     steps:
       - name: I Am Prod
         run: echo "This is a ${{ github.event.inputs.prod }} workflow"
-        if: ${{ github.event.inputs.prod == 'Non-Prod'}}
-
+        
+  NonProdJob:
+    if: ${{ github.event.inputs.prod == 'Non-Prod'}}
+    runs-on: ubuntu-latest
+    steps:
       - name: I Am NonProd
         run: echo "This is a ${{ github.event.inputs.prod }} workflow"
-        if: ${{ github.event.inputs.prod == 'Non-Prod'}}
 
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
