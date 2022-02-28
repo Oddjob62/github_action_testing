@@ -10,6 +10,7 @@ on:
 jobs:
   ProdJob:
     if: ${{ github.event.inputs.prod == 'Non-Prod'}}
+    runs-on: ubuntu-latest
     steps:
       - name: I Am Prod
         run: echo "This is a ${{ github.event.inputs.prod }} workflow"
